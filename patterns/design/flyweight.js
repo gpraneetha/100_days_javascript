@@ -1,12 +1,11 @@
 //Structural DP - Minimize memory usage by sharing data for related objects
 class Book {
-    constructor({book, price}) {
+    constructor(book) {
         this.book = book;
-        this.price = price;
     }
     operation(id) {
         // Intrinsic - peroperties shared among related objects
-        console.log('Intrinsic Property: ', this.book, this.price);
+        console.log('Intrinsic Property: ', this.book);
         // Extrinsic - properties that are unique to every object
         console.log('Extrinsic Property: ', id);
     }
