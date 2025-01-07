@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Food Cart</title>
+    </head>
+    <body>
+        <!-- Fruits Section Starts -->
+        <p id="para" class="fruits-header">Fruits</p>
+        <div id="fruits-container">
+            <li id="item1" class="item" name="avacado">Avacado</li>
+            <li id="item2" class="item" name="blueberry">BlueBerry</li>
+        </div>
+        <!-- Fruits Section Ends -->
+        <script>
+            // selects a single element from dom using id attribute; used for getting unique elements; faster performance
+            const fruitsContainer = document.getElementById('fruits-container');
+            console.log('getElementById', fruitsContainer);
+                    
+            // selects all elements with the given name
+            const avacado = document.getElementsByName('avacado');
+            console.log('getElementsByName', avacado);
+
+            // selects all elements with the given tag name
+            const listItems = document.getElementsByTagName('li');
+            console.log('getElementsByTagName', listItems);
+
+            // selects all elements with the given class
+            const fruitsHeader = document.getElementsByClassName('fruits-header');
+            console.log('getElementsByClassName', fruitsHeader);
+
+            // selects first element with the given css selector
+            const fruit1 = document.querySelector('.item');
+            console.log('querySelector', fruit1);
+
+            // selects all elements with the given css selector
+            const fruits = document.querySelectorAll('.item');
+            console.log('querySelectorAll', fruits);
+            
+            // select elements relative to other elements
+            const parentElement = avacado[0].parentElement;
+            console.log('avacado parentElement', parentElement);
+
+            const children = fruitsContainer.children;
+            console.log('fruits childElements', children);
+
+            const nextSibling = avacado[0].nextSibling;
+            console.log('avacado nextSibling', nextSibling);
+
+            const previousSibling = nextSibling.previousSibling;
+            console.log('berry previous sibling', previousSibling);
+
+            const item1 = document.getElementById('item1');
+            item1.style.color = 'green'
+            const item2 = document.getElementById('item2');
+            item2.style.color = 'blue'
+        </script>
+    </body>
+</html>
