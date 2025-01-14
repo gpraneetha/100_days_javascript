@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Form structure: Task 1</title>
+    <style>
+        body {
+            background-color: #fff;
+            color: #333;
+            font: 1em / 1.4 Helvetica Neue, Helvetica, Arial, sans-serif;
+            padding: 1em;
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn-primary" onclick="getProteinFood()">Proteins</button>
+    <div style="font-size: 16px; margin-top: 18px;" id="food"></div>
+    <script>
+        // lazy loading non-critical resources - on user interaction like button click
+        // eg. show chat, google docs share, loading 3rd party widgets
+        // dynamic import() enables lazy loading
+        function getProteinFood() {
+            // imported only when this function is called
+            import("./nutrition.js")
+            .then((module) => {
+                const proteins = module.getProteins();
+                console.log(proteins);
+                const elem = document.getElementById('food');
+                for (let i=0;i<proteins.length;i++) {
+                    const el = document.createElement('li');
+                    el.innerText = proteins[i];
+                    elem.appendChild(el);
+                }
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+        }        
+    </script>
+</body>
+
+</html>

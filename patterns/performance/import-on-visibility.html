@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Form structure: Task 1</title>
+    <style>
+        body {
+            background-color: #fff;
+            color: #333;
+            font: 1em / 1.4 Helvetica Neue, Helvetica, Arial, sans-serif;
+            padding: 1em;
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="display: flex; flex-direction: column;">
+        <img style="height: 100vh;" class="lazy-loaded-image lazy" alt="CATS are lazy loading" src="" data-src="./images/cat_1.jpeg" />
+        <img style="height: 100vh;" class="lazy-loaded-image lazy" alt="CATS are lazy loading" src="" data-src="./images/cat_2.jpeg" />
+        <img style="height: 100vh;" class="lazy-loaded-image lazy" alt="CATS are lazy loading" src="" data-src="./images/cat_3.jpeg" />
+        <img style="height: 100vh;" class="lazy-loaded-image lazy" alt="CATS are lazy loading" src="" data-src="./images/cat_4.jpeg" />
+        <img style="height: 100vh;" class="lazy-loaded-image lazy" alt="CATS are lazy loading" src="" data-src="./images/cat_5.jpeg" />
+        <img style="height: 100vh;" class="lazy-loaded-image lazy" alt="CATS are lazy loading" src="" data-src="./images/cat_6.jpeg" />
+    
+    </div>
+    
+    <script>
+        // lazy loading images that aren't visible in viewport
+        // only gets loaded when user scrolls down
+        var lazyImages = document.querySelectorAll(".lazy-loaded-image.lazy");
+        // Intersection observer over all the imgs
+        let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+            console.log('Entries', entries);
+            entries.forEach(function(entry) {
+                // isIntersecting will be true if that entry is in viewport
+                if (entry.isIntersecting) {
+                    let lazyImage = entry.target;
+                    console.log('Loaded on scrolling', lazyImage.dataset.src);
+                    lazyImage.src = lazyImage.getAttribute('data-src');
+                    lazyImage.classList.remove("lazy");
+                    lazyImageObserver.unobserve(lazyImage);
+                }
+            });
+        });
+        // observes over all non-loaded images
+        lazyImages.forEach(function(lazyImage) {
+            lazyImageObserver.observe(lazyImage);
+        });
+        
+    </script>
+</body>
+
+</html>
