@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- <script src="https://unpkg.com/web-vitals?module" async>
+    </script> -->
+    <title>Web Vitals</title>
+    <style>
+        body {
+            background-color: #fff;
+            color: #333;
+            font: 1em / 1.4 Helvetica Neue, Helvetica, Arial, sans-serif;
+            padding: 1em;
+            margin: 0;
+            background-image: url('./images/Foodie.jpeg');
+            background-repeat: no-repeat;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+        p {
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn-primary" onclick="getProteinFood()">Proteins</button>
+    <button class="btn-primary" onclick="getFibreFood()">Fibre</button>
+    <button class="btn-primary" onclick="getFatFood()">Fats</button>
+    <script type="module">
+        // Core Web Vitals - performance metrics that Google considers important in webpage overall user experience
+        import {onCLS, onINP, onLCP} from 'https://unpkg.com/web-vitals@4?module';
+        // 1. Largest Contentful Paint - time taken to load and render page's main content
+        // Good LCP values -> 2.5s or less; Poor LCP Values -> greater than 4s
+        onLCP(console.log);
+        // 2. Interaction to Next Paint - measures page overall responsiveness to user interactions - input delay, run event handlers till browser paints the next frame
+        // interaction types supported -> mouse click, touchscreen tap, keypress
+        // Good INP values -> 200ms or less; Poor INP values -> greater than 500ms
+        onCLS(console.log);
+        // 3. Cumulative Layout Shift - measures visual stability to avoid unexpected layout shift
+        // Good CLS values -> 0.1 or less; Poor CLS values -> greater than 0.25
+        onINP(console.log);
+    </script>
+    <script>
+        function getProteinFood() {
+            const proteins = ['Eggs', 'Chicken', 'Cottage Cheese', 'Greek yogurt', 'Almonds', 'Lentils'];
+            const div = document.createElement('div');
+            for (let protein of proteins) {
+                const image = document.createElement('img');
+                image.src = `./images/${protein}.jpeg`;
+                // added dimensions to image because of poor CLS - layout shifts since browser doesnt know how much space to allocate to it
+                image.style.height = image.style.width = '80px';
+                const element = document.createElement('p');
+                element.textContent = protein;
+                div.appendChild(element);
+                div.appendChild(image);
+            }
+            document.body.appendChild(div);
+        }
+    </script>
+    <!-- <script src="https://unpkg.com/web-vitals/dist/web-vitals.iife.js">
+        // 1. Time to First Byte - time taken for client to receive first byte of content
+        // Good TTFB values -> 0.8s or less; Poor TTFB values -> greater than 1.8s
+        import {onTTFB} from 'web-vitals';
+
+        function getTTFB() {
+            onTTFB(console.log);
+        }
+
+        // 2. First Contentful Paint - time taken by client to render first piece of content after navigation
+        // Good FCP Values -> 1.8s or less; Poor FCP values -> greater than 3s
+        import {onFCP} from 'web-vitals';
+        onFCP(console.log);
+
+        // 3. Largest Contentful Paint - time taken to load and render page's main content
+        // Good LCP values -> 2.5s or less; Poor LCP Values -> greater than 4s
+        import {onLCP} from 'web-vitals';   
+        onLCP(console.log);
+
+        // 4. Time to interactive - time taken from page loading to when its responding to user's input
+        // Good TTI values -> less than 5s
+        // can be measured using Lighthouse tool
+
+
+
+        // 6. Interaction to Next Paint - measures page overall responsiveness to user interactions - input delay, run event handlers till browser paints the next frame
+        // interaction types supported -> mouse click, touchscreen tap, keypress
+        // Good INP values -> 200ms or less; Poor INP values -> greater than 500ms
+        // can be measured using Lighthouse tool
+
+        import { onCLS, onINP, onLCP } from "https://unpkg.com/web-vitals@4?module";
+        // Core Web Vitals - performance metrics that Google considers important in webpage overall user experience
+        // 1. Largest Contentful Paint - time taken to load and render page's main content
+        // Good LCP values -> 2.5s or less; Poor LCP Values -> greater than 4s
+        onLCP(console.log);
+
+        // 2. Interaction to Next Paint - measures page overall responsiveness to user interactions - input delay, run event handlers till browser paints the next frame
+        // interaction types supported -> mouse click, touchscreen tap, keypress
+        // Good INP values -> 200ms or less; Poor INP values -> greater than 500ms
+        onINP(console.log);
+
+        // 3. Cumulative Layout Shift - measures visual stability to avoid unexpected layout shift
+        // Good CLS values -> 0.1 or less; Poor CLS values -> greater than 0.25
+        onCLS(console.log);
+
+
+
+        function getFibreFood() {
+
+        }
+
+        function getFatFood() {
+
+        }
+    </script> -->
+</body>
+
+</html>
