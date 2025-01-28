@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="./view-transition.js"></script>
+    <title>View Transition</title>
+    <style>
+        body {
+            background-color: #fff;
+            color: #333;
+            font: 1em / 1.4 Helvetica Neue, Helvetica, Arial, sans-serif;
+            padding: 1em;
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+        summary {
+            cursor: pointer;
+        }
+
+        /* view transition pseudo elements */
+        ::view-transition-old(root),
+        ::view-transition-new(root) {
+            animation-duration: 2s;
+        }
+    </style>
+</head>
+
+<body>
+    <details>
+        <summary>AI Models</summary>
+        <ul>
+            <li>ChatGPT</li>
+            <li>Claude</li>
+            <li>GPT-4</li>
+            <li>DALL-E</li>
+            <li>Gemini</li>
+            <li>Deepseek</li>
+        </ul>
+      </details>
+</body>
+
+</html>

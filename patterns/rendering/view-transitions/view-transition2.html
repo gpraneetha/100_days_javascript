@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="./view-transition2.js"></script>
+    <title>View Transition</title>
+    <style>
+        body {
+            background-color: #fff;
+            color: #333;
+            font: 1em / 1.4 Helvetica Neue, Helvetica, Arial, sans-serif;
+            padding: 1em;
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+        summary {
+            cursor: pointer;
+        }
+        .cat-container {
+            display: flex;
+            flex-direction: column;
+            width: 20%;
+        }
+        img {
+            height: 100px;
+            width: 100px;
+        }
+        /* for smooth transitions */
+        /* view transition pseudo elements */
+        ::view-transition-old(root),
+        ::view-transition-new(root) {
+            animation-duration: 2s;
+        }
+    </style>
+</head>
+<body>
+    <details>
+        <summary>Food</summary>
+        <div style="display: flex;">
+            <div class="cat-container">
+                <img src="./../images/Greek yogurt.jpeg">
+                <img src="./../images/food2.jpeg">
+                <img src="./../images/food3.jpeg">
+                <img src="./../images/food4.jpeg">
+                <img src="./../images/Chicken.jpeg">
+                <img src="./../images/food1.jpeg">
+                
+            </div>
+            <section class="gallery-view">
+              <figure>
+                <img style="height: 500px; width: 500px;">
+              </figure>
+            </section>
+
+        </div>
+      </details>
+</body>
+
+</html>
